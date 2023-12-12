@@ -314,3 +314,15 @@ if __name__ == "__main__":
     sys.exit(err_code)
 
         
+
+
+'''
+EXAM TESTCASE OUTPUT
+('Hello', 'Hello') []
+('Hello', 'Hola') [('d', 1, 3), ('i', 2, 'la')]
+('Do you want to marry me, Christina?', 'I wish you merry Christmas!') [('i', 0, 'I wish'), ('d', 6, 2), ('d', 11, 8), ('i', 12, 'e'), ('d', 13, 1), ('d', 17, 4), ('i', 23, 'm'), ('d', 24, 2), ('i', 25, 's!'), ('d', 27, 1)]
+('Hello, Hello! How are you?', 'Hello! How are you?') [('d', 5, 7)]
+('', '') []
+('', 'A') [('i', 0, 'A')]
+('Happy Holidays!', '!Felices Fiestas!') [('i', 0, '!Fe'), ('d', 3, 8), ('i', 5, 'ces Fiest'), ('d', 14, 1), ('d', 15, 1)]
+'''
