@@ -275,10 +275,21 @@ def generate_edit_list(s, t, indexOffset=0):
     elif not t:
         return [('d', indexOffset, len(s))]
 
+    lcsPaths=[]
     # Recursive Cases
     if s[0] == t[0]:
         # Common prefix, continue recursively
-        return generate_edit_list(s[1:], t[1:], indexOffset+1)
+        lcsPaths.append(generate_edit_list(s[1:], t[1:], indexOffset+1))
+
+    if s[-1] == t[-1]:
+        # Common prefix, continue recursively
+        lcsPaths.append(generate_edit_list(s[1:], t[1:], indexOffset+1))
+    
+    if lcsPaths:
+        if len(lcsPaths) == 2 and edit_list_cheaper(lcsPaths[1], lcsPaths[0]):
+                return lcsPaths[1] 
+        return lcsPaths[0] 
+
     else:
         # Explore different possibilities and choose the best
         case1 = compact_edit_list([('d', indexOffset, 1)] + generate_edit_list(s[1:], t, indexOffset))  # Delete first character of s
@@ -286,7 +297,6 @@ def generate_edit_list(s, t, indexOffset=0):
         if edit_list_cheaper(case1, case2):
             return case1 
         return case2
-
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

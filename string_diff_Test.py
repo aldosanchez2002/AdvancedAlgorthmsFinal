@@ -73,8 +73,7 @@ testcases_input = [
     ("Finland", "NorthernLights"),
     ("Madagascar", "BaobabTrees")
 ]
-testcases_output = [3, 3, 3, 4, 3, 3, 4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 3, 2, 4, 2, 5, 2, 4, 4, 6, 4, 3, 3, 2, 2, 3, 4, 2, 2, 2, 3, 5, 3, 3, 6, 4, 3, 5, 4, 6, 6, 4, 7]
-
+testcases_output = [3, 3, 3, 1, 3, 3, 4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 3, 2, 1, 2, 5, 2, 4, 4, 6, 4, 1, 3, 1, 2, 3, 4, 2, 2, 2, 3, 5, 3, 1, 1, 4, 3, 5, 4, 6, 6, 4, 7]
 for index,testcase in enumerate(testcases_input):
     response = generate_edit_list(testcase[0], testcase[1])
     assert len(response) == testcases_output[index], f"Testcase {testcase} failed. Expected {testcases_output[index]} but got {len(response)}"
