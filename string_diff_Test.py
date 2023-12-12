@@ -1,7 +1,21 @@
 #Test file for string_diff.py
 # Aldo Sanchez - 12/11/2023
 # UTEP CS5350 Advanced Algorithms - Code for Final Exam
-from string_diff import generate_edit_list
+from string_diff import generate_edit_list, apply_edit_list, edit_list_cheaper
+
+# Testcases from the exam
+examTestcases_input = [ ("Hello", "Hello"),
+                        ("Hello", "Hola"),
+                        ("Do you want to marry me, Christina?", "I wish you merry Christmas!"),
+                        ("Hello, Hello! How are you?", "Hello! How are you?"),
+                        ("",""),
+                        ("","A"),
+                        ("Happy Holidays!","!Felices Fiestas!"),
+                       ]
+for index,testcase in enumerate(examTestcases_input):
+    response = generate_edit_list(testcase[0], testcase[1])
+    print(f"\t{testcase} {len(response)}\n\t\t", "\n\t\t ".join([str(edit) for edit in response]))
+
 
 # AI genereated test set
 # I maunally traced trough 10 examples
@@ -65,5 +79,14 @@ for index,testcase in enumerate(testcases_input):
     assert len(response) == testcases_output[index], f"Testcase {testcase} failed. Expected {testcases_output[index]} but got {len(response)}"
     print(f"\t{testcase}"," "*(30-len(testcase[0])-len(testcase[1])),f"{len(response)}\n\t\t", "\n\t\t ".join([str(edit) for edit in response]))
 print("ALL TESTCASES PASSED")
-    
-    
+
+
+
+# I believe there is a bug in the exam testcases
+edit_list_aldo = generate_edit_list("Do you want to marry me, Christina?", "I wish you merry Christmas!")
+edit_list_exam = [('d', 0, 2), ('d', 5, 8), ('d', 6, 1), ('d', 10, 4), ('d', 16, 2), ('d', 17, 1), ('i', 17, 's!'), ('i', 16, 'm'), ('i', 6, 'e'),('i',1,'wish '), ('i',0,'I')]
+compared = edit_list_cheaper(edit_list_aldo, edit_list_exam)
+print(compared)
+
+print("Aldo\nDo you want to marry me, Christina? Edit Length", len(edit_list_aldo), "\n",apply_edit_list("Do you want to marry me, Christina?", edit_list_aldo))
+print("Exam\nDo you want to marry me, Christina? Edit Length", len(edit_list_exam), "\n",apply_edit_list("Do you want to marry me, Christina?", edit_list_exam))
