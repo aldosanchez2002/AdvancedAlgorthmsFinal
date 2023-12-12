@@ -284,7 +284,7 @@ def generate_edit_list(s, t, indexOffset=0):
 
     if s[-1] == t[-1]:
         # Common sufix, continue recursively
-        lcsPaths.append(generate_edit_list(s[1:], t[1:], indexOffset+1))
+        lcsPaths.append(generate_edit_list(s[:1], t[:1], indexOffset))
     
     if lcsPaths:
         if len(lcsPaths) == 2 and edit_list_cheaper(lcsPaths[1], lcsPaths[0]):
